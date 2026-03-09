@@ -4,16 +4,45 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { MapPin, Phone, Mail } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
-
+import emailjs from "@emailjs/browser";
 const ContactSection = () => {
   const { toast } = useToast();
   const [form, setForm] = useState({ name: "", email: "", phone: "", company: "", message: "" });
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    toast({ title: "Enquiry Submitted", description: "Thank you! We'll get back to you within 24 hours." });
+  const handleSubmit = async (e: React.FormEvent) => {
+  e.preventDefault();
+
+  try {
+    await emailjs.send(
+      "service_ln5yeq6",
+      "template_sem8bbg",
+      {
+        name: form.name,
+        email: form.email,
+        phone: form.phone,
+        company: form.company,
+        message: form.message,
+      },
+      "xGA71FrPZZT0WwxnN"
+    );
+
+    toast({
+      title: "Enquiry Submitted",
+      description: "Thank you! We'll get back to you within 24 hours."
+    });
+
     setForm({ name: "", email: "", phone: "", company: "", message: "" });
-  };
+
+  } catch (error: any) {
+  console.log("EMAIL ERROR STATUS:", error?.status);
+  console.log("EMAIL ERROR TEXT:", error?.text);
+
+  toast({
+    title: "Error",
+    description: "Failed to send enquiry. Please try again."
+  });
+}
+};
 
   return (
     <section id="contact" className="section-padding gradient-section">
@@ -83,7 +112,7 @@ const ContactSection = () => {
                   <Mail className="h-5 w-5 text-accent shrink-0 mt-0.5" />
                   <div>
                     <p className="font-medium text-foreground text-sm">Email</p>
-                    <p className="text-muted-foreground text-sm">support@freightlinklogistics.com</p>
+                    <p className="text-muted-foreground text-sm">support.freightlink@gmail.com</p>
                   </div>
                 </div>
               </div>

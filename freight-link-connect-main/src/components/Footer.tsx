@@ -47,7 +47,9 @@ const Footer = () => {
         </div>
 
         <div className="border-t border-primary-foreground/20 mt-10 pt-6 text-center text-sm text-primary-foreground/50">
-          © {new Date().getFullYear()} Freight Link Logistics Systems. All rights reserved.
+        <p>
+         © 2010 Freight Link Logistics Systems. All rights reserved.
+       </p>
         </div>
       </div>
     </footer>
