@@ -15,7 +15,7 @@ const CRMSection = () => (
           Manage your shipments seamlessly with our dedicated logistics platform. Track cargo, access documentation, and stay updated on your freight — all in one place.
         </p>
         <Button size="lg" asChild>
-          <a href="#" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2">
+          <a href="https://freight-flow-pi.vercel.app/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2">
             Launch Freight Flow CRM
             <ExternalLink className="h-4 w-4" />
           </a>
